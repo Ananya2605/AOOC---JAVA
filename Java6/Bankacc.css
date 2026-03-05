@@ -1,0 +1,33 @@
+
+class BankAccount {
+   private double balance;
+
+   public BankAccount(double var1) {
+      this.balance = var1;
+   }
+
+   public void balanceEnquiry() {
+      System.out.println("Current Balance: $" + this.balance);
+   }
+
+   public void deposit(double var1) throws NegativeNumberException {
+      if (var1 < (double)0.0F) {
+         throw new NegativeNumberException("Cannot deposit a negative amount.");
+      } else {
+         this.balance += var1;
+         System.out.println("Successfully deposited: $" + var1);
+      }
+   }
+
+   public void withdraw(double var1) throws LowBalanceException, NegativeNumberException {
+      if (var1 < (double)0.0F) {
+         throw new NegativeNumberException("Cannot withdraw a negative amount.");
+      } else if (var1 > this.balance) {
+         throw new LowBalanceException("Insufficient funds! Current balance: $" + this.balance);
+      } else {
+         this.balance -= var1;
+         System.out.println("Successfully withdrew: $" + var1);
+      }
+   }
+}
+
